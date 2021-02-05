@@ -5,11 +5,9 @@
  */
 package editor.display;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.LayoutManager;
+import editor.Document;
+
+import java.awt.*;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -104,7 +102,7 @@ public class CharacterDisplay extends JPanel {
             extends JLabel
             implements TableCellRenderer {
 
-        public static final Color CELLFG = Color.BLUE;
+        public static final Color CELLFG = Color.BLACK;
         public static final Color CELLBG = Color.WHITE;
 
         public CharacterRenderer() {
@@ -173,7 +171,7 @@ public class CharacterDisplay extends JPanel {
          * @param col
          */
         public void setCursorAt(String c, int row, int col) {
-            cursorRow = row;
+            cursorCol = row;
             cursorCol = col;
             fireTableCellUpdated(row, col);
             System.out.format("screen(%d,%d) <= cursor\n", row, col);

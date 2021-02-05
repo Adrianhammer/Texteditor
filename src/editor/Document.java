@@ -86,7 +86,7 @@ public class Document {
             display.displayChar((Character) linkedColumn.get(cursorRow).get(i), cursorRow, i);
         }
 
-        //display.displayCursor(' ', cursorRow, cursorCol);
+        display.displayCursor(' ', cursorRow, cursorCol);
 
         //if cursor on the end of column, increment the row.
         if (cursorCol == totalCol - 1 && cursorRow == totalRow - 1) {
