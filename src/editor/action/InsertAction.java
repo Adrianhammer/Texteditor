@@ -17,8 +17,11 @@ import java.awt.event.ActionEvent;
  */
 public class InsertAction extends EditorAction {
 
+    Editor editor;
+
     public InsertAction(String name, Editor ed) {
         super(name, ed);
+        this.editor = ed;
     }
 
     @Override

@@ -110,21 +110,27 @@ public class Editor extends JFrame {
     public void addKeyMappings() {
         inputMap.clear();
         actionMap.clear();
-        String name = "insertChar";
-        EditorAction action = new InsertAction(name,
-                                               this);
+        String name = "insert";
+        EditorAction action = new InsertAction(name, this);
         addKeyMapRange('a', 'z', action);
         addKeyMapRange('A', 'Z', action);
         addKeyMapRange('0', '9', action);
 
-        for (var c : ".,;:!@'-<> ()æøåÆØÅ".toCharArray()) {
+        for (var c : ".,;:!@'-<>? ()æøåÆØÅ".toCharArray()) {
             KeyStroke keyStroke = KeyStroke.getKeyStroke(c);
             addKeyMapping(keyStroke, action);
         }
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0), new ArrowKeyAction("UP", "moveCursor", this));
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0), new ArrowKeyAction("DOWN", "moveCursor", this));
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0), new ArrowKeyAction("LEFT", "moveCursor", this));
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0), new ArrowKeyAction("RIGHT", "moveCursor", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0),
+                new ArrowKeyAction("UP", "moveCursor", this));
+
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0),
+                new ArrowKeyAction("DOWN", "moveCursor", this));
+
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0),
+                new ArrowKeyAction("LEFT", "moveCursor", this));
+
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0),
+                new ArrowKeyAction("RIGHT", "moveCursor", this));
     }
 
     public CharacterDisplay getDisplay() {

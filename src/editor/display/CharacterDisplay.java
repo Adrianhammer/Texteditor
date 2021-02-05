@@ -203,7 +203,7 @@ public class CharacterDisplay extends JPanel {
             System.out.format("screen(%d,%d) <= %s\n", row, col, data);
             data[row][col] = (String) o;
             fireTableCellUpdated(row, col);
-//            repaint();
+            repaint();
         }
 
         @Override

@@ -25,30 +25,33 @@ public class Document {
     CharacterDisplay display;
     private int cursorRow;
     private int cursorCol;
+    private int totalRow;
+    private int totalCol;
     private char[][] data;
 
-    private StringBuilder sb;
     private LinkedList<LinkedList> linkedColumn = new LinkedList<>();
 
     public Document(CharacterDisplay display) {
         //set up data structure
         this.display = display;
         cursorCol = cursorRow = 0;
+        totalRow = display.HEIGHT;
+        totalCol = display.WIDTH;
 
         initializeLinkedList();
     }
 
     private void initializeLinkedList() {
         //Lager 20 rader til brettet
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < totalRow; i++) {
             linkedColumn.add(new LinkedList<Character>());
         }
 
         //Begynner fra utsiden av listen, så fyller vi innsiden etterpå med Chars.
-        for (int i = 0; i < 20; i++) {
+        for (int i = 0; i < totalRow; i++) {
             LinkedList row = linkedColumn.get(i);
 
-            for (int j = 0; j < 40; j++) {
+            for (int j = 0; j < totalCol; j++) {
                 row.add(j, ' ');
             }
         }
@@ -71,7 +74,7 @@ public class Document {
         updateDisplay();
     }
 
-    public void insert(Character c) {
+    public void insert(char c) {
         // insert the character c into the data structure
         linkedColumn.get(cursorRow).add(cursorCol, c);
 
@@ -79,22 +82,21 @@ public class Document {
         linkedColumn.get(cursorRow).removeLast();
 
         // Updates the list with displayable characters.
-        for (int i = cursorCol; i < 40; i++) {
+        for (int i = cursorCol; i < totalCol; i++) {
             display.displayChar((Character) linkedColumn.get(cursorRow).get(i), cursorRow, i);
         }
 
-        display.displayCursor(' ', cursorRow, cursorCol);
+        //display.displayCursor(' ', cursorRow, cursorCol);
 
         //if cursor on the end of column, increment the row.
-        if (cursorCol == 39 && cursorRow == 19) {
+        if (cursorCol == totalCol - 1 && cursorRow == totalRow - 1) {
         } else {
             cursorCol++;
-            if (cursorCol >= CharacterDisplay.WIDTH) {
+            if (cursorCol >= totalCol) {
                 cursorCol = 0;
                 cursorRow++;
             }
         }
-        updateDisplay();
     }
 
     //Disse stod med "public char deleteNext. Why?
