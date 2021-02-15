@@ -92,8 +92,8 @@ public class CharacterDisplay extends JPanel {
     }
 
     public void displayCursor(char c, int row, int col) {
-        String s = String.format("%c|", c);
-        tableModel.setValueAt(s, row, col);
+        String s = String.format("%c", c);
+        //tableModel.setValueAt(s, row, col);
         tableModel.setCursorAt(s, row, col);
         repaint();
     }

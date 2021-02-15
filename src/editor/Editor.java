@@ -5,9 +5,7 @@
  */
 package editor;
 
-import editor.action.ArrowKeyAction;
-import editor.action.EditorAction;
-import editor.action.InsertAction;
+import editor.action.*;
 import editor.display.CharacterDisplay;
 import java.awt.BorderLayout;
 import java.awt.Container;
@@ -131,7 +129,17 @@ public class Editor extends JFrame {
 
         addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0),
                 new ArrowKeyAction("RIGHT", "moveCursor", this));
+
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0),
+                new DeletePrevAction("DeletePrev", this));
+
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0),
+                new DeleteNextAction("DeleteNext", this));
+
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+                new InsertLineAction("InsertLine", this));
     }
+
 
     public CharacterDisplay getDisplay() {
         return display;
