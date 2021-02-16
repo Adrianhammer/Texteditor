@@ -14,12 +14,7 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.KeyStroke;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
 /**
  * Editor is the main class of the editor application. It is mainly
@@ -48,7 +43,9 @@ public class Editor extends JFrame {
     private Document doc;
 
     public Editor() throws HeadlessException {
-        super("Simple Text Editor");
+        super("Adel & Adrian's text editor");
+        setLocationRelativeTo(null);
+
 
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new WindowAdapter() {
@@ -134,10 +131,10 @@ public class Editor extends JFrame {
         addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0),
                 new DeletePrevAction("DeletePrev", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, InputEvent.ALT_DOWN_MASK),
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0),
                 new DeleteNextAction("DeleteNext", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.CTRL_DOWN_MASK),
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.ALT_DOWN_MASK),
                 new InsertLineAction("InsertLine", this));
     }
 
@@ -148,5 +145,11 @@ public class Editor extends JFrame {
 
     public Document getDocument() {
         return doc;
+    }
+
+    public JButton darkMode() {
+        JButton button = new JButton("Turn on darkmode");
+        button.setBounds(100,100,100,100);
+        return button;
     }
 }

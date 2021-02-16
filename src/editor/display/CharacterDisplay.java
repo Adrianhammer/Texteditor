@@ -88,6 +88,7 @@ public class CharacterDisplay extends JPanel {
     }
 
     public void eraseChar(char c, int row, int col) {
+
         displayChar(' ', row, col);
     }
 

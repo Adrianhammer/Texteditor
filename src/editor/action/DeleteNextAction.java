@@ -17,6 +17,7 @@ public class DeleteNextAction extends EditorAction {
 
     public DeleteNextAction(String name, Editor ed) {
         super(name);
+        this.editor = ed;
     }
 
     @Override

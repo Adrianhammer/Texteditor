@@ -70,8 +70,8 @@ public class Document {
      * methods
      */
     public void insertLine() {
-        // create a new line in the data structure
-        updateDisplay();
+        cursorRow++;
+        cursorCol = 0;
     }
 
     public void insert(char c) {
@@ -99,10 +99,15 @@ public class Document {
         }
     }
 
-    //Disse stod med "public char deleteNext. Why?
+    //  Disse stod med "public char deleteNext. Why?
+    //  substring???
+    //  StringUtils.removeEnd(null, *)
+    //  StringUtils.removeEnd("", *)
+    //  StringUtils.removeEnd(*, null)
+    //  ???
     public void deleteNext() {
-        /**Denne blir vanskelig å få til før vi fikser cursor ass, prøvde**/
     }
+
 
     public void deletePrev() {
         // Adds a char to the list
@@ -170,6 +175,8 @@ public class Document {
                 }
                 display.displayCursor(' ', cursorRow, cursorCol);
             }
+
+
 
 
     //display metoden krever 3 parameter, updateDisplay ber om 1 paramter. Why? Skal vi bruke Sentinel strukturen?

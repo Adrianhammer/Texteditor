@@ -18,6 +18,7 @@ public class InsertLineAction extends EditorAction {
 
     public InsertLineAction(String name, Editor ed) {
         super(name);
+        this.editor = ed;
     }
 
     @Override
