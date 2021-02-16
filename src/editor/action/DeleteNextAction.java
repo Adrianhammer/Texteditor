@@ -16,7 +16,7 @@ import java.awt.event.ActionEvent;
 public class DeleteNextAction extends EditorAction {
 
     public DeleteNextAction(String name, Editor ed) {
-        super(name, ed);
+        super(name);
     }
 
     @Override

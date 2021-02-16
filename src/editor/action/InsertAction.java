@@ -20,7 +20,7 @@ public class InsertAction extends EditorAction {
     Editor editor;
 
     public InsertAction(String name, Editor ed) {
-        super(name, ed);
+        super(name);
         this.editor = ed;
     }
 

@@ -17,8 +17,10 @@ import java.awt.event.ActionEvent;
  */
 public class DeleteLineAction extends EditorAction {
 
+    Editor editor;
     public DeleteLineAction(String name, Editor ed) {
-        super(name, ed);
+        super(name);
+        this.editor = ed;
     }
 
     @Override

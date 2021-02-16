@@ -16,8 +16,12 @@ import java.awt.event.ActionEvent;
 public class DeletePrevAction extends EditorAction {
 
     public DeletePrevAction(String name, Editor ed) {
-        super(name, ed);
+
+        super(name);
+        this.editor = ed;
     }
+
+
 
     @Override
     public void actionPerformed(ActionEvent ae) {

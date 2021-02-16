@@ -10,6 +10,7 @@ import editor.display.CharacterDisplay;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.HeadlessException;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -118,25 +119,25 @@ public class Editor extends JFrame {
             KeyStroke keyStroke = KeyStroke.getKeyStroke(c);
             addKeyMapping(keyStroke, action);
         }
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_UP, 0),
-                new ArrowKeyAction("UP", "moveCursor", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_UP, InputEvent.ALT_DOWN_MASK),
+                new ArrowKeyAction("UP", "UP", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, 0),
-                new ArrowKeyAction("DOWN", "moveCursor", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DOWN, InputEvent.ALT_DOWN_MASK),
+                new ArrowKeyAction("DOWN", "DOWN", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, 0),
-                new ArrowKeyAction("LEFT", "moveCursor", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_LEFT, InputEvent.ALT_DOWN_MASK),
+                new ArrowKeyAction("LEFT", "LEFT", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, 0),
-                new ArrowKeyAction("RIGHT", "moveCursor", this));
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_RIGHT, InputEvent.ALT_DOWN_MASK),
+                new ArrowKeyAction("RIGHT", "RIGHT", this));
 
         addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_BACK_SPACE, 0),
                 new DeletePrevAction("DeletePrev", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0),
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, InputEvent.ALT_DOWN_MASK),
                 new DeleteNextAction("DeleteNext", this));
 
-        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, 0),
+        addKeyMapping(KeyStroke.getKeyStroke(KeyEvent.VK_ENTER, InputEvent.CTRL_DOWN_MASK),
                 new InsertLineAction("InsertLine", this));
     }
 

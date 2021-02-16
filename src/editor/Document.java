@@ -117,7 +117,7 @@ public class Document {
         if (cursorCol == 0 && cursorRow == 0) {
 
         } else if (cursorCol == 0 && cursorRow >= 0) {
-            cursorCol = totalCol;
+            cursorCol = totalCol -1;
             cursorRow--;
         } else {
             cursorCol--;
@@ -125,24 +125,53 @@ public class Document {
         display.displayCursor(' ', cursorRow, cursorCol);
     }
 
-    public void moveCursor(String direction) {
-        /**Cursor up**/
-        if (cursorRow == 0) {
+    /**Cursor Left**/
+    public void moveCursorLeft() {
+        if (cursorRow == 0 && cursorCol == 0) {
             //Do nothing
-        } else if (cursorRow > 0) {
-            //Reduce cursorRow number
+        } else if (cursorRow >= 0 && cursorCol == 0) {
+            cursorCol = totalCol - 1;
             cursorRow--;
+        } else {
+            cursorCol--;
         }
         display.displayCursor(' ', cursorRow, cursorCol);
-
-        /**Cursor down**/
-        if (cursorCol == totalRow - 1) {
-            //Do nothing
-        } else if (cursorRow < totalRow - 1 ) {
-            //Increase cursorRow number
-            cursorRow++;
-        }
     }
+
+        /**Cursor Right**/
+        public void moveCursorRight() {
+            if (cursorRow == totalRow - 1 && cursorCol == totalCol - 1) {
+                //Do nothing
+            } else {
+                cursorCol++;
+                if (cursorCol >= totalCol) {
+                    cursorRow++;
+                    cursorCol = 0;
+                    }
+                }
+                display.displayCursor(' ', cursorRow, cursorCol);
+            }
+
+            /**Cursor Up**/
+            public void moveCursorUp() {
+                if (cursorRow == 0) {
+
+                } else if (cursorRow > 0) {
+                    cursorRow--;
+                }
+                display.displayCursor(' ', cursorRow, cursorCol);
+            }
+
+            public void moveCursorDown() {
+                if (cursorCol == totalCol - 1) {
+
+                } else if (cursorRow < totalCol - 1) {
+                    cursorRow++;
+                }
+                display.displayCursor(' ', cursorRow, cursorCol);
+            }
+
+
     //display metoden krever 3 parameter, updateDisplay ber om 1 paramter. Why? Skal vi bruke Sentinel strukturen?
     /*
     private void updateDisplay(int line) {

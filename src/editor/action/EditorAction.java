@@ -17,9 +17,8 @@ public abstract class EditorAction extends AbstractAction {
     protected char ch;
     Editor editor;
 
-    public EditorAction(String name, Editor editor) {
+    public EditorAction(String name) {
         super(name);
-        this.editor = editor;
     }
 
     public String getName() {

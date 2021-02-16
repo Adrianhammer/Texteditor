@@ -16,16 +16,35 @@ import java.awt.event.ActionEvent;
 public class ArrowKeyAction extends EditorAction {
 
     private String direction;
+    Editor editor;
 
     public ArrowKeyAction(String direction, String name, Editor ed) {
-        super(name, ed);
+        super(name);
         this.direction = direction;
+        this.editor = ed;
     }
 
     @Override
     public void actionPerformed(ActionEvent ae) {
         Document doc = editor.getDocument();
-        doc.moveCursor(direction);
+        switch (direction) {
+
+            case "LEFT": doc.moveCursorLeft();
+            break;
+
+            case "RIGHT": doc.moveCursorRight();
+            break;
+
+            case "UP": doc.moveCursorUp();
+            break;
+
+            case "DOWN": doc.moveCursorDown();
+            break;
+
+            default:
+                System.out.println("Input not registered correctly");
+                break;
+        }
     }
 
 }

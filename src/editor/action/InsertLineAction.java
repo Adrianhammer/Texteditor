@@ -17,7 +17,7 @@ import java.awt.event.ActionEvent;
 public class InsertLineAction extends EditorAction {
 
     public InsertLineAction(String name, Editor ed) {
-        super(name, ed);
+        super(name);
     }
 
     @Override
