@@ -57,6 +57,11 @@ public class Document {
         }
     }
 
+    public void displayCursor(char c, int row, int col) {
+        display.displayCursor(' ', cursorRow, cursorCol);
+
+    }
+
     //Duplikat updateDisplay, hvilken er riktig?
     private void updateDisplay() {
         // should be called at the end of the functionality
@@ -86,7 +91,7 @@ public class Document {
             display.displayChar((Character) linkedColumn.get(cursorRow).get(i), cursorRow, i);
         }
 
-        display.displayCursor(' ', cursorRow, cursorCol);
+        display.displayCursor(' ', cursorRow, cursorCol +1);
 
         //if cursor on the end of column, increment the row.
         if (cursorCol == totalCol - 1 && cursorRow == totalRow - 1) {
@@ -106,6 +111,25 @@ public class Document {
     //  StringUtils.removeEnd(*, null)
     //  ???
     public void deleteNext() {
+        linkedColumn.get(cursorRow).set(cursorCol, ' ');
+
+        for(int i= cursorCol; i < totalCol; i++){
+            display.displayChar((Character) linkedColumn.get(cursorRow).get(i), cursorRow, i);
+        }
+
+        if (cursorCol == 0 && cursorRow == 0) {
+            System.out.println("1");
+
+        } else System.out.println(2); if (cursorCol == 0 && cursorRow >= 0) {
+            //Virker som denne bugger, og sletter en bak så foran. Lettere å se når vi kan se cursor
+            //cursorCol = totalCol -1;
+            cursorRow++;
+            System.out.println("3");
+        } else {
+            cursorCol++;
+            System.out.println("4");
+        }
+
     }
 
 
@@ -117,20 +141,26 @@ public class Document {
             display.displayChar((Character) linkedColumn.get(cursorRow).get(i), cursorRow, i);
         }
 
-        display.displayCursor(' ', cursorRow, cursorCol);
+        //bug
+        //display.displayCursor(' ', cursorRow, cursorCol +1);
 
         if (cursorCol == 0 && cursorRow == 0) {
 
-        } else if (cursorCol == 0 && cursorRow >= 0) {
+        } else  if (cursorCol == 0 && cursorRow >= 0) {
             cursorCol = totalCol -1;
             cursorRow--;
         } else {
             cursorCol--;
         }
-        display.displayCursor(' ', cursorRow, cursorCol);
+        display.displayCursor(' ', cursorRow, cursorCol +1);
     }
 
     /**Cursor Left**/
+    //Linje 169-171, ikke ferdig, snakk med Adel
+    //Legger igjen traces av cursoren, men cursor traces forsvinner når man trykker
+    //DEL eller BACKSPACE
+    //Må kanskje lage en loop i updateDisplay metoden som går gjennom lista og sletter
+    //siste cursor hver gang
     public void moveCursorLeft() {
         if (cursorRow == 0 && cursorCol == 0) {
             //Do nothing
@@ -140,7 +170,9 @@ public class Document {
         } else {
             cursorCol--;
         }
-        display.displayCursor(' ', cursorRow, cursorCol);
+        var l = linkedColumn.getFirst();
+        char o = (char) l.get(cursorCol);
+        display.displayCursor(o, cursorRow, cursorCol);
     }
 
         /**Cursor Right**/

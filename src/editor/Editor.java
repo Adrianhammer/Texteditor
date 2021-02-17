@@ -147,9 +147,9 @@ public class Editor extends JFrame {
         return doc;
     }
 
-    public JButton darkMode() {
+    /*public JButton darkMode() {
         JButton button = new JButton("Turn on darkmode");
         button.setBounds(100,100,100,100);
         return button;
-    }
+    }*/
 }
