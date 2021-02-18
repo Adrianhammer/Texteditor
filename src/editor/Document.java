@@ -118,18 +118,14 @@ public class Document {
         }
 
         if (cursorCol == 0 && cursorRow == 0) {
-            System.out.println("1");
 
-        } else System.out.println(2); if (cursorCol == 0 && cursorRow >= 0) {
+        } else if (cursorCol == 0 && cursorRow >= 0) {
             //Virker som denne bugger, og sletter en bak så foran. Lettere å se når vi kan se cursor
             //cursorCol = totalCol -1;
             cursorRow++;
-            System.out.println("3");
         } else {
             cursorCol++;
-            System.out.println("4");
         }
-
     }
 
 
@@ -186,7 +182,9 @@ public class Document {
                     cursorCol = 0;
                     }
                 }
-                display.displayCursor(' ', cursorRow, cursorCol);
+            var l = linkedColumn.getFirst();
+            char o = (char) l.get(cursorCol);
+            display.displayCursor(' ', cursorRow, cursorCol);
             }
 
             /**Cursor Up**/
@@ -207,9 +205,6 @@ public class Document {
                 }
                 display.displayCursor(' ', cursorRow, cursorCol);
             }
-
-
-
 
     //display metoden krever 3 parameter, updateDisplay ber om 1 paramter. Why? Skal vi bruke Sentinel strukturen?
     /*
