@@ -1,19 +1,27 @@
-# Texteditor
-In our first mandatory assigment for IS-211. We also recieved a number of sub-tasks, or requirements to meet. In the README me will note the things we have started on,
-completed and other valuable information.
+# IS-211 Texteditor mandatory 1
 
-## Sub-tasks to do:
-- Choose a fitting data structure and implement it.
-- Insert regular characters
-- Make -zæø ̊a, A-ZÆØ ̊A, 0-9, and separators (,.;:!) printable characters.
-- Delete characters
-- Linebreaking
-- Display cursor
+### Authors: Adrian Hammer & Adel Hodzalari
 
-## Progress so far:
-- Data structure has been choosen, and implemented.
-- Inserting characters fully functioning.
-- Line break implemented.
+#### In this assignment we have been instructed to create a text editor that should be capable of inserting, overwriting and deleting text anywhere in the document.
 
-## Bugs:
-- When reaching the last possible character in the LinkedList. It only changes the cursor position. This will be fixed when implementing "Delete" function.
+#### Keybindings
+
+- ALT needs to be pressed when navigating around with arrow keys and line shifting (⎇ + ↑ ↓ → ← ⏎)
+- Backspace to delete previous character (Behind cursors) ⌫
+- Delete to delete next character (In front of cursor) ⌦
+- Shift to write in capital letters ⇧
+- Caps Lock to toggle between capital and lowercase letters ⇧
+- Space to insert space between characters ⎵
+
+# Functionality
+
+- Characters supported: A-Z|0-1|a-z|§-?|Ø-Å|ø-å|
+
+
+# Datastructure
+
+# Advantages & disadvantages
+
+# Improvements
+
+# Bugs
